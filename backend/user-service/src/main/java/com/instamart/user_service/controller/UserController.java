@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.instamart.user_service.dto.UsersEmailDTO;
 import com.instamart.user_service.model.User;
 import com.instamart.user_service.service.UserService;
 
@@ -32,8 +33,13 @@ public class UserController {
     }
 
     @GetMapping
-    public List<User> getAllUsers() {
-        return userService.findAll();
+    public ResponseEntity<List<User>> getAllUsers() {
+        return ResponseEntity.ok(userService.findAll());
+    }
+
+    @GetMapping("/users-email")
+    public ResponseEntity<List<UsersEmailDTO>> getAllUsersEmail() {
+        return ResponseEntity.ok(userService.findAllUsersEmail());
     }
 
 }

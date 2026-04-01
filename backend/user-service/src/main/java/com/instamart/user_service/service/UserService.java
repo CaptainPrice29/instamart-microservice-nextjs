@@ -2,10 +2,12 @@ package com.instamart.user_service.service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.instamart.user_service.dto.UsersEmailDTO;
 import com.instamart.user_service.model.User;
 import com.instamart.user_service.repository.UserRepository;
 
@@ -40,6 +42,12 @@ public class UserService {
 
     public List<User> findAll() {
         return userRepository.findAll();
+    }
+
+    public List<UsersEmailDTO> findAllUsersEmail() {
+        return userRepository.findAll().stream().map(
+                user -> new UsersEmailDTO(user.getUsername(), user.getEmail(), user.getFirstName(), user.getLastName()))
+                .toList();
     }
 
 }

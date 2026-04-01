@@ -82,6 +82,16 @@
             "projectName": "order-service",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-EmailServiceApplication<email-service>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.instamart.email_service.EmailServiceApplication",
+            "projectName": "email-service",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
         }
     ]
 }
