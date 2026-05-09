@@ -33,7 +33,7 @@ public class ProductService {
                     .discountPrice(product.getDiscountPrice())
                     .currency(product.getCurrency())
                     .stockQuantity(product.getStockQuantity())
-                    .isAvailable(product.isAvailable())
+                    .isAvailable(product.getIsAvailable())
                     .category(product.getCategory())
                     .brand(product.getBrand())
                     .image(product.getImage())

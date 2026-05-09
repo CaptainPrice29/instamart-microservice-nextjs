@@ -2,6 +2,7 @@ package com.instamart.email_service.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
@@ -16,7 +17,9 @@ import lombok.RequiredArgsConstructor;
 public class EmailService {
     private final UsersClient usersClient;
     private final JavaMailSender javaMailSender;
-    private static final String FROM_EMAIL = "captainprice2905@gmail.com";
+
+    @Value("${spring.mail.username}")
+    private String fromEmail;
 
     public List<UsersEmailDTO> getAllUsersEmail() {
         return usersClient.getAllUsersEmail();
@@ -32,7 +35,7 @@ public class EmailService {
     private void sendSimpleMail(String recipient, String subject, String msgBody) {
         try {
             SimpleMailMessage mailMessage = new SimpleMailMessage();
-            mailMessage.setFrom(FROM_EMAIL);
+            mailMessage.setFrom(fromEmail);
             mailMessage.setTo(recipient);
             mailMessage.setSubject(subject);
             mailMessage.setText(msgBody);

@@ -1,18 +1,19 @@
 package com.instamart.product_service.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.time.LocalDateTime;
-import java.util.List;
-import java.util.Map;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Builder(toBuilder = true)
@@ -20,17 +21,18 @@ import java.util.Map;
 @AllArgsConstructor
 @Document(collection = "products")
 public class Product {
+
     @Id
     private String productId;
     private String name;
     private String description;
     @Indexed(unique = true)
     private String sku;
-    private double price;
+    private Double price;
     private Double discountPrice;
     private String currency;
     private Integer stockQuantity;
-    private boolean isAvailable;
+    private Boolean isAvailable;
     private String category;
     private String brand;
     private String image; // Main thumbnail
