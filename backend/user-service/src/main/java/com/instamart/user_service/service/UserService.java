@@ -1,11 +1,13 @@
 package com.instamart.user_service.service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.instamart.user_service.config.exception.ResourceNotFoundException;
 import com.instamart.user_service.dto.UsersEmailDTO;
 import com.instamart.user_service.model.User;
 import com.instamart.user_service.repository.UserRepository;
@@ -47,6 +49,10 @@ public class UserService {
         return userRepository.findAll().stream().map(
                 user -> new UsersEmailDTO(user.getUsername(), user.getEmail(), user.getFirstName(), user.getLastName()))
                 .toList();
+    }
+    public User findById(String id){
+        Objects.requireNonNull(id, "id must not be null");
+        return userRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("User not found with id: " + id));
     }
 
 }

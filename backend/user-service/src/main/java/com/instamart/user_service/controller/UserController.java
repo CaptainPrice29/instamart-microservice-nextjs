@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.instamart.user_service.config.exception.ResourceNotFoundException;
 import com.instamart.user_service.dto.UsersEmailDTO;
 import com.instamart.user_service.model.User;
 import com.instamart.user_service.service.UserService;
@@ -34,7 +35,12 @@ public class UserController {
 
     @GetMapping
     public ResponseEntity<List<User>> getAllUsers() {
-        return ResponseEntity.ok(userService.findAll());
+        try {
+            return ResponseEntity.ok(userService.findAll());
+            
+        } catch (Exception e) {
+            throw new ResourceNotFoundException("Failed to retrieve users");
+        }
     }
 
     @GetMapping("/users-email")
