@@ -78,11 +78,13 @@
     <dependency>
       <groupId>de.flapdoodle.embed</groupId>
       <artifactId>de.flapdoodle.embed.mongo</artifactId>
+      <version>4.8.0</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>de.flapdoodle.embed</groupId>
-      <artifactId>de.flapdoodle.embed.mongo.spring3x</artifactId>
+      <artifactId>de.flapdoodle.embed.mongo.spring.boot</artifactId>
+      <version>4.8.0</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
