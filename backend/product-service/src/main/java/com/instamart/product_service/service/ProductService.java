@@ -3,10 +3,12 @@ package com.instamart.product_service.service;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.instamart.product_service.model.Product;
 import com.instamart.product_service.repository.ProductRepository;
 
@@ -16,8 +18,13 @@ import org.springframework.data.domain.Pageable;
 @Service
 public class ProductService {
 
-    @Autowired
-    private ProductRepository productRepository;
+   
+    private final ProductRepository productRepository;
+    private final RedisService redisService;
+    public ProductService(ProductRepository productRepository,RedisService redisService) {
+        this.productRepository = productRepository;
+        this.redisService = redisService;
+    }
 
     public Product createProduct(Product product) {
         return productRepository.save(product);
@@ -58,7 +65,14 @@ public class ProductService {
     }
 
     public List<Product> getAllProducts() {
-        return productRepository.findAll();
+        List<Product> cachedArray = redisService.getValue("all_products", new TypeReference<List<Product>>() {});
+        if (cachedArray != null) {
+            return cachedArray;
+        } else {
+            List<Product> products = productRepository.findAll();
+            redisService.setValue("all_products", products, 3600L); // Cache for 1 hour
+            return products;
+        }
     }
 
     public Page<Product> getFilteredProducts(Map<String, String> queryParams, Pageable pageable) {

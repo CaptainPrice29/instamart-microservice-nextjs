@@ -1,0 +1,8 @@
+2026-05-27 00:56:04 INFO  c.i.u.UserServiceApplication - Starting UserServiceApplication using Java 25.0.3 with PID 290999 (/mnt/e6bb2b82-678a-43ac-a5dd-87faa0db8968/CODING/instamart-microservice-nextjs/backend/user-service/target/classes started by raza in /mnt/e6bb2b82-678a-43ac-a5dd-87faa0db8968/CODING/instamart-microservice-nextjs/backend/user-service)
+2026-05-27 00:56:04 DEBUG c.i.u.UserServiceApplication - Running with Spring Boot v3.5.11, Spring v6.2.16
+2026-05-27 00:56:04 INFO  c.i.u.UserServiceApplication - No active profile set, falling back to 1 default profile: "default"
+2026-05-27 00:56:06 INFO  c.i.u.UserServiceApplication - Started UserServiceApplication in 2.354 seconds (process running for 2.847)
+2026-05-27 01:01:19 INFO  c.i.u.UserServiceApplication - Starting UserServiceApplication using Java 25.0.3 with PID 296501 (/mnt/e6bb2b82-678a-43ac-a5dd-87faa0db8968/CODING/instamart-microservice-nextjs/backend/user-service/target/classes started by raza in /mnt/e6bb2b82-678a-43ac-a5dd-87faa0db8968/CODING/instamart-microservice-nextjs/backend/user-service)
+2026-05-27 01:01:19 DEBUG c.i.u.UserServiceApplication - Running with Spring Boot v3.5.11, Spring v6.2.16
+2026-05-27 01:01:19 INFO  c.i.u.UserServiceApplication - No active profile set, falling back to 1 default profile: "default"
+2026-05-27 01:01:20 INFO  c.i.u.UserServiceApplication - Started UserServiceApplication in 2.256 seconds (process running for 2.757)

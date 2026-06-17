@@ -16,8 +16,11 @@ import org.springframework.data.domain.Sort;
 
 public class ProductRepositoryImpl implements ProductRepositoryCustom {
 
-    @Autowired
-    private MongoTemplate mongoTemplate;
+    private final MongoTemplate mongoTemplate;
+
+    public ProductRepositoryImpl(MongoTemplate mongoTemplate) {
+        this.mongoTemplate = mongoTemplate;
+    }
 
     @Override
     public Page<Product> findByParams(Map<String, String> queryParams, Pageable pageable) {

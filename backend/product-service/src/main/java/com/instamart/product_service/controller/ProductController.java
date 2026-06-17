@@ -23,8 +23,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 @RequestMapping("/api/products")
 public class ProductController {
 
-    @Autowired
-    private ProductService productService;
+    private final ProductService productService;
+
+    public ProductController(ProductService productService) {
+        this.productService = productService;
+    }
 
     @PostMapping("/create")
     public ResponseEntity<Product> addProduct(@RequestBody Product product) {
